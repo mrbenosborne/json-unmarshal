@@ -7,7 +7,7 @@ include '../vendor/autoload.php';
 include 'FlightRoute.php';
 
 /**
- * Class Flight
+ * Class Flight.
  */
 class Flight
 {

@@ -10,7 +10,7 @@ use Tests\Data\ChildClass;
 use Tests\Data\ParentClass;
 
 /**
- * Class UnmarshalTest
+ * Class UnmarshalTest.
  */
 class UnmarshalTest extends TestCase
 {
@@ -22,12 +22,13 @@ class UnmarshalTest extends TestCase
      *          with an array of data.
      * Then:    The properties are set with their matching data.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalScalars(): void
     {
-        $input = new class {
+        $input = new class() {
             #[JSON('age')]
             public int $age;
 
@@ -44,10 +45,10 @@ class UnmarshalTest extends TestCase
         Unmarshal::decode(
             $input,
             [
-                'age' => 1,
+                'age'        => 1,
                 'first_name' => 'John Doe',
-                'is_human' => false,
-                'latitude' => 1.1234567,
+                'is_human'   => false,
+                'latitude'   => 1.1234567,
             ]
         );
         $this->assertEquals(1, $input->age);
@@ -65,12 +66,13 @@ class UnmarshalTest extends TestCase
      * Then:    The property with the attribute is set with the
      *          matching data.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalOneField(): void
     {
-        $input = new class {
+        $input = new class() {
             #[JSON('age')]
             public int $age;
             public string $firstName = '';
@@ -79,7 +81,7 @@ class UnmarshalTest extends TestCase
         Unmarshal::decode(
             $input,
             [
-                'age' => 1,
+                'age'        => 1,
                 'first_name' => '',
             ]
         );
@@ -95,12 +97,13 @@ class UnmarshalTest extends TestCase
      *          with an array of data.
      * Then:    The property remains empty.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalUnMatchedField(): void
     {
-        $input = new class {
+        $input = new class() {
             #[JSON('age')]
             public int $age = 0;
         };
@@ -118,8 +121,9 @@ class UnmarshalTest extends TestCase
      *          already.
      *  and:    The data, if found is set against each property.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalObject(): void
     {
@@ -128,7 +132,7 @@ class UnmarshalTest extends TestCase
             $input,
             [
                 'first_name' => 'Foo',
-                'child' => [
+                'child'      => [
                     'age' => 1,
                 ],
             ]
@@ -146,8 +150,9 @@ class UnmarshalTest extends TestCase
      * Then:    The data, if found is set against each property
      *  and:    The existing class is returned, a new one is not created.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalObjectAlreadyInstantiated(): void
     {
@@ -159,7 +164,7 @@ class UnmarshalTest extends TestCase
             $input,
             [
                 'first_name' => 'Foo',
-                'child' => [
+                'child'      => [
                     'age' => 1,
                 ],
             ]
@@ -182,12 +187,13 @@ class UnmarshalTest extends TestCase
      * Then:    The property with the attribute is set with the
      *          matching data.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalObjectWithDotSyntax(): void
     {
-        $input = new class {
+        $input = new class() {
             #[JSON('stats.hits')]
             public int $hits;
         };
@@ -195,8 +201,8 @@ class UnmarshalTest extends TestCase
         Unmarshal::decode(
             $input,
             [
-                "stats" => [
-                    "hits" => 1,
+                'stats' => [
+                    'hits' => 1,
                 ],
             ]
         );
@@ -214,12 +220,13 @@ class UnmarshalTest extends TestCase
      *
      * Then:    An exception is thrown.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalArrayWithoutType(): void
     {
-        $input = new class {
+        $input = new class() {
             #[JSON('people')]
             public array $people;
         };
@@ -228,7 +235,7 @@ class UnmarshalTest extends TestCase
         Unmarshal::decode(
             $input,
             [
-                "people" => [
+                'people' => [
                     [
                         'first_name' => 'Foo',
                     ],
@@ -252,12 +259,13 @@ class UnmarshalTest extends TestCase
      * Then:    The property with the attribute is set with the
      *          matching data and type.
      *
-     * @return void
      * @throws Exception
+     *
+     * @return void
      */
     public function testUnmarshalArrayWithType(): void
     {
-        $input = new class {
+        $input = new class() {
             #[JSON('people', ParentClass::class)]
             public array $people;
         };
@@ -265,7 +273,7 @@ class UnmarshalTest extends TestCase
         Unmarshal::decode(
             $input,
             [
-                "people" => [
+                'people' => [
                     [
                         'first_name' => 'Foo',
                     ],

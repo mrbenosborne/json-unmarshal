@@ -5,8 +5,7 @@ namespace Tests\Data;
 use JSON\Attributes\JSON;
 
 /**
- * Class ChildClass
- * @package Tests\Data
+ * Class ChildClass.
  */
 class ChildClass
 {

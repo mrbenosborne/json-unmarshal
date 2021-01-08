@@ -3,7 +3,7 @@
 use JSON\Attributes\JSON;
 
 /**
- * Class FlightRoute
+ * Class FlightRoute.
  */
 class FlightRoute
 {
