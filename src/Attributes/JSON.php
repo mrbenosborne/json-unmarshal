@@ -5,16 +5,16 @@ namespace JSON\Attributes;
 use Attribute;
 
 /**
- * Class JSON
- * @package JSON\Attributes
+ * Class JSON.
  */
 #[Attribute]
 class JSON
 {
     /**
      * JSON constructor.
-     * @param  string  $field
-     * @param  string|null  $type
+     *
+     * @param string      $field
+     * @param string|null $type
      */
     public function __construct(
         public string $field,

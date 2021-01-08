@@ -9,14 +9,14 @@ use ReflectionException;
 use ReflectionType;
 
 /**
- * Class Unmarshal
- * @package JSON
+ * Class Unmarshal.
  */
 class Unmarshal
 {
     /**
-     * @param  object  $class
-     * @param  array  $data
+     * @param object $class
+     * @param array  $data
+     *
      * @throws Exception
      */
     public static function decode(object &$class, array $data): void
@@ -34,28 +34,28 @@ class Unmarshal
                 /** @var ReflectionType $propertyType */
                 switch ($propertyType->getName()) {
                     case 'string':
-                        $class->{$property->name} = (string)self::getValueFromData(
+                        $class->{$property->name} = (string) self::getValueFromData(
                             $data,
                             $jsonAttribute->field,
                             $class->{$property->name} ?? '',
                         );
                         break;
                     case 'int':
-                        $class->{$property->name} = (int)self::getValueFromData(
+                        $class->{$property->name} = (int) self::getValueFromData(
                             $data,
                             $jsonAttribute->field,
                             $class->{$property->name} ?? 0,
                         );
                         break;
                     case 'bool':
-                        $class->{$property->name} = (bool)self::getValueFromData(
+                        $class->{$property->name} = (bool) self::getValueFromData(
                             $data,
                             $jsonAttribute->field,
                             $class->{$property->name} ?? false,
                         );
                         break;
                     case 'float':
-                        $class->{$property->name} = (float)self::getValueFromData(
+                        $class->{$property->name} = (float) self::getValueFromData(
                             $data,
                             $jsonAttribute->field,
                             $class->{$property->name} ?? 0,
@@ -78,11 +78,12 @@ class Unmarshal
     }
 
     /**
-     * @param  object  $class
-     * @param  string  $propertyName
-     * @param  array  $data
-     * @param  string  $lookupFieldName
-     * @param  string|null  $type
+     * @param object      $class
+     * @param string      $propertyName
+     * @param array       $data
+     * @param string      $lookupFieldName
+     * @param string|null $type
+     *
      * @throws ReflectionException
      * @throws Exception
      *
@@ -122,26 +123,30 @@ class Unmarshal
     }
 
     /**
-     * @param  array  $data
-     * @param  string  $key
-     * @param  mixed  $default
+     * @param array  $data
+     * @param string $key
+     * @param mixed  $default
+     *
      * @return mixed
      */
     private static function getValueFromData(array $data, string $key, mixed $default): mixed
     {
         if (str_contains($key, '.')) {
             $keys = explode('.', $key, 2);
+
             return self::getValueFromData($data[$keys[0]], $keys[1], $default);
         }
+
         return $data[$key] ?? $default;
     }
 
     /**
-     * @param  object  $class
-     * @param  string  $propertyName
-     * @param  string  $type
-     * @param  array  $data
-     * @param  string  $lookupFieldName
+     * @param object $class
+     * @param string $propertyName
+     * @param string $type
+     * @param array  $data
+     * @param string $lookupFieldName
+     *
      * @throws ReflectionException
      *
      * @psalm-suppress ArgumentTypeCoercion
@@ -156,6 +161,7 @@ class Unmarshal
         // instantiated property
         if (isset($class->{$propertyName})) {
             self::decode($class->{$propertyName}, $data[$lookupFieldName]);
+
             return;
         }
 
