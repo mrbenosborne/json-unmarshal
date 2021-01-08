@@ -1,6 +1,8 @@
 # JSON Unmarshal
 A PHP package for un-marshalling JSON data onto a class properties.
 
+![PHP Composer](https://github.com/mrbenosborne/json-unmarshal/workflows/PHP%20Composer/badge.svg)
+
 # Install
 Install via composer.
 

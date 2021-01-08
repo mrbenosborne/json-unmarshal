@@ -31,6 +31,6 @@
   },
   "scripts": {
     "test": "./vendor/bin/phpunit ./tests/ --testdox",
-    "psalm": "./vendor/bin/psalm --no-cache"
+    "psalm": "./vendor/bin/psalm --no-cache --shepherd"
   }
 }
