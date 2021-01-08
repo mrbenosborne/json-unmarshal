@@ -1,7 +1,15 @@
 # JSON Unmarshal
 A PHP package for un-marshalling JSON data onto a class properties.
 
-![PHP Composer](https://github.com/mrbenosborne/json-unmarshal/workflows/PHP%20Composer/badge.svg)
+<div align="center">
+
+![Build](https://github.com/mrbenosborne/json-unmarshal/workflows/PHP%20Composer/badge.svg)
+[![Latest Stable Version](https://poser.pugx.org/mrbenosborne/json-unmarshal/v)](//packagist.org/packages/mrbenosborne/json-unmarshal)
+[![Latest Unstable Version](https://poser.pugx.org/mrbenosborne/json-unmarshal/v/unstable)](//packagist.org/packages/mrbenosborne/json-unmarshal)
+[![License](https://poser.pugx.org/mrbenosborne/json-unmarshal/license)](//packagist.org/packages/mrbenosborne/json-unmarshal)
+[![composer.lock](https://poser.pugx.org/mrbenosborne/json-unmarshal/composerlock)](//packagist.org/packages/mrbenosborne/json-unmarshal)
+
+</div>
 
 # Install
 Install via composer.
