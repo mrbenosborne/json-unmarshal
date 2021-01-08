@@ -35,9 +35,6 @@ include 'FlightRoute.php';
  */
 class Flight
 {
-    /**
-     * @var string
-     */
     #[JSON(field: 'airline')]
     public string $airlineName;
 
