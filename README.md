@@ -11,7 +11,7 @@ composer require mrbenosborne/json-unmarshal
 # Example
 Below is an example of a Flight class, the full example can be found in the examples/ folder.
 
-```
+```php
 <?php
 
 use JSON\Attributes\JSON;
