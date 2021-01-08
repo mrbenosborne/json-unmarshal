@@ -1,0 +1,24 @@
+{
+  "airline": "Foo Airlines",
+  "aircraft": {
+    "type": "Boeing 747"
+  },
+  "route": [
+    {
+      "sequence": 1,
+      "cost": 50.25,
+      "luggageIncluded": true,
+      "airline": "Foo Airlines",
+      "departureAirport": "London Gatwick",
+      "arrivalAirport": "Malta International"
+    },
+    {
+      "sequence": 2,
+      "cost": 20.25,
+      "luggageIncluded": true,
+      "airline": "Foo Airlines",
+      "departureAirport": "Malta International",
+      "arrivalAirport": "London Gatwick"
+    }
+  ]
+}

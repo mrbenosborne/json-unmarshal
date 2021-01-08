@@ -1,17 +1,3 @@
-# JSON Unmarshal
-A PHP package for un-marshalling JSON data onto a class properties.
-
-# Install
-Install via composer.
-
-```
-composer require mrbenosborne/json-unmarshal
-```
-
-# Example
-Below is an example of a Flight class, the full example can be found in the examples/ folder.
-
-```
 <?php
 
 use JSON\Attributes\JSON;
@@ -46,4 +32,23 @@ $jsonData = json_decode(file_get_contents('flight.json'), true);
 
 // Unmarshal JSON
 Unmarshal::decode($flight, $jsonData);
-```
+
+// ----------
+// Print data
+// ----------
+echo $flight->airlineName.PHP_EOL; // Foo Airlines
+echo $flight->aircraftType.PHP_EOL; // Boeing 747
+
+echo PHP_EOL;
+echo 'Route:'.PHP_EOL;
+
+/** @var FlightRoute $route */
+foreach ($flight->route as $route) {
+    echo '------'.PHP_EOL;
+    echo $route->sequence.PHP_EOL;
+    echo $route->cost.PHP_EOL;
+    echo var_export($route->luggageIncluded, true).PHP_EOL;
+    echo $route->airline.PHP_EOL;
+    echo $route->departureAirport.PHP_EOL;
+    echo $route->arrivalAirport.PHP_EOL;
+}
